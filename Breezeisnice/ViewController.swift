@@ -16,6 +16,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     
     @IBOutlet var MeterImageView: UIImageView!
     @IBOutlet var BgMap: MKMapView!
+    @IBAction func refresh_Click(_ sender: Any) {
+        //スピナー表示
+        SwiftSpinner.show("位置情報取得中")
+        if CLLocationManager.locationServicesEnabled() {
+            print("Refresh")
+            locationManager?.requestLocation()
+        }
+    }
+    
     
     /*
      * 角度関連

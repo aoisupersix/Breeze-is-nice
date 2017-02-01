@@ -42,7 +42,13 @@
                             <constraint firstItem="MNl-nP-Vnq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mDL-au-z7O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Breeze is nice" id="gXw-YW-iVd"/>
+                    <navigationItem key="navigationItem" title="Breeze is nice" id="gXw-YW-iVd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="2gZ-Xr-xZN">
+                            <connections>
+                                <action selector="refresh_Click:" destination="BYZ-38-t0r" id="1gY-6E-p24"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="BgMap" destination="MNl-nP-Vnq" id="yn7-Kn-oba"/>
                         <outlet property="MeterImageView" destination="VMT-nP-7vM" id="Cmp-5n-9Bj"/>
