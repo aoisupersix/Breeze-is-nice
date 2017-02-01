@@ -22,15 +22,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="BgMap" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNl-nP-Vnq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="P2X-vz-kev"/>
+                                    <constraint firstAttribute="height" constant="667" id="tak-oj-Phc"/>
+                                </constraints>
+                            </mapView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="Meter" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="VMT-nP-7vM">
-                                <rect key="frame" x="78" y="208" width="219" height="251"/>
+                                <rect key="frame" x="16" y="521" width="94" height="113"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="MNl-nP-Vnq" secondAttribute="trailing" id="6px-K1-3U1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MNl-nP-Vnq" secondAttribute="bottom" id="BIc-ys-Dfw"/>
+                            <constraint firstItem="MNl-nP-Vnq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PcC-Cd-Ab3"/>
+                            <constraint firstItem="MNl-nP-Vnq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mDL-au-z7O"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Breeze is nice" id="gXw-YW-iVd"/>
                     <connections>
+                        <outlet property="BgMap" destination="MNl-nP-Vnq" id="yn7-Kn-oba"/>
                         <outlet property="MeterImageView" destination="VMT-nP-7vM" id="Cmp-5n-9Bj"/>
                     </connections>
                 </viewController>

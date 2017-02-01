@@ -10,10 +10,12 @@ import UIKit
 import CoreLocation
 import SwiftyJSON
 import SwiftSpinner
+import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMapDelegate {
     
     @IBOutlet var MeterImageView: UIImageView!
+    @IBOutlet var BgMap: MKMapView!
     
     /*
      * 角度関連
@@ -83,19 +85,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     }
     //向き変更
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-        if (Location.sharedManager.wind_deg != nil){
-            orientation = newHeading.magneticHeading
-            
-            //
-            if(orientation <= Location.sharedManager.wind_deg!){
-                //風向きの方が大きいので、風向き-角度だけ回転させる
-                direction = Location.sharedManager.wind_deg! - orientation
-            }else{
-                direction = 360 - (orientation - Location.sharedManager.wind_deg!)
-            }
-            
-            updateLabel()
-        }
+        orientation = newHeading.magneticHeading
+        updateAngle()
+        updateLabels()
     }
     //位置情報取得
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -130,10 +122,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         //速度計算
         Location.sharedManager.relativeSpeed = UserStatus.sharedManager.calcVelocity(wind: Location.sharedManager.wind_speed!, temp: Location.sharedManager.temp!)
         print("RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
+        mapPosition(latD: 10000,lonD: 10000,anim: true)
+        updateLabels()
     }
     
     func openWeather_ErrorSession(error: Error) {
-        
+        //TODO
+        print(error)
     }
     
     /*
@@ -161,8 +156,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         })
     }
     
-    //ラベル更新
-    func updateLabel() {
+    /*
+     *  ラベル更新
+     */
+    func updateLabels() {
         if (Location.sharedManager.isWeatherEnabled() && Location.sharedManager.isLocationEnabled()){
             //label.text = "wind speed\n\(self.app.wind_speed!)m/s"
             
@@ -187,6 +184,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             
             //label2.text = "speed\n\(speed)km/h"
         }
+    }
+    
+    /*
+     *  回転角度更新
+     */
+    func updateAngle(){
+        if (Location.sharedManager.isLocationEnabled()){
+            if(orientation <= Location.sharedManager.wind_deg!){
+                //風向きの方が大きいので、風向き-角度だけ回転させる
+                direction = Location.sharedManager.wind_deg! - orientation
+            }else{
+                direction = 360 - (orientation - Location.sharedManager.wind_deg!)
+            }
+        }
+    }
+    
+    /*
+     *  地図の位置更新
+     */
+    func mapPosition(latD: Int, lonD: Int, anim: Bool){
+        //地図
+        BgMap.centerCoordinate = CLLocationCoordinate2DMake(Location.sharedManager.latitude!, Location.sharedManager.longitude!)
+        // 縮尺
+        let latDist : CLLocationDistance = CLLocationDistance(latD)
+        let lonDist : CLLocationDistance = CLLocationDistance(lonD)
+        
+        // 表示領域を作成
+        let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(BgMap.centerCoordinate, latDist, lonDist);
+        
+        BgMap.setRegion(region, animated: anim)
     }
     
     /*
