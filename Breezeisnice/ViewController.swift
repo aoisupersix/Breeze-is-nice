@@ -129,15 +129,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      *  OpenWeatherMap
      */
     func openWeather_CompleteSession() {
-        SwiftSpinner.hide()
-        //速度計算
-        Location.sharedManager.relativeSpeed = UserStatus.sharedManager.calcVelocity(wind: Location.sharedManager.wind_speed!, temp: Location.sharedManager.temp!)
-        print("RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
-        mapPosition(latD: 10000,lonD: 10000,anim: true)
-        updateLabels()
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.startUpdatingHeading()
+
+        DispatchQueue.main.async {
+            SwiftSpinner.hide()
+            //速度計算
+            Location.sharedManager.relativeSpeed = UserStatus.sharedManager.calcVelocity(wind: Location.sharedManager.wind_speed!, temp: Location.sharedManager.temp!)
+            print("RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
+            self.mapPosition(latD: 10000,lonD: 10000,anim: true)
+            self.updateAngle()
+            self.updateLabels()
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager?.startUpdatingHeading()
+            }
         }
+ 
     }
     
     func openWeather_ErrorSession(error: Error) {
@@ -176,11 +181,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     func updateLabels() {
         if (Location.sharedManager.isWeatherEnabled() && Location.sharedManager.isLocationEnabled()){
             WindSpeedLabel.text = "風速: \(Location.sharedManager.wind_speed!) m/s"
-            
+            RelativeSpeedLabel.text = "速度: \(UserStatus.sharedManager.calcRelative(angle: direction))km/h"
 
             print("orientation:\(orientation),wind:\(Location.sharedManager.wind_deg!),direct:\(direction),angle:\(angle)")
-            
-            RelativeSpeedLabel.text = "速度: \(UserStatus.sharedManager.calcRelative(angle: angle))km/h"
         }
     }
     
