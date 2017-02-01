@@ -9,30 +9,12 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
-
-    /*
-     *  天気情報
-     */
-    var temp: Double?
-    var wind_speed: Double?
-    var wind_deg: Double?
     
-    /*
-     *  計算情報
-     */
-    var road: Double = 1.0  //路面状態
-    var resist: Double = 0.0036 //自転車の種類
-    var dress: Double = 1.0 //服装
-    var height: Double = 176 //身長
-    var weight: Double = 78.0   //体重
-    var bikeWeight: Double = 10.0   //自転車の重量
-    var tire: Double = 2096 //タイヤ周長
-    var normalVelo: Double = 30.0   //巡航速度
-    var inclin: Double = 45.0   //胴傾き
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true

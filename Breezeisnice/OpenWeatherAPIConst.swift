@@ -11,5 +11,5 @@
  */
 
 struct OpenWeatherMapConst {
-    static let OPENWEATHERMAP_APIKEY = "3e71b86edac4d0f6836aaaeb815e7f7f"  //APIKEY
+    static let API_KEY = "3e71b86edac4d0f6836aaaeb815e7f7f"  //APIKEY
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B3F8BD8AFBC34F143999A64A /* Pods_Breezeisnice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E06D7493E8E38FA4544C4C0 /* Pods_Breezeisnice.framework */; };
+		E161CE6A1E419698008FD324 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E161CE691E419698008FD324 /* Location.swift */; };
+		E161CE6E1E419EB2008FD324 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E161CE6D1E419EB2008FD324 /* UserStatus.swift */; };
 		E19200C61E40A7D500164D24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19200C51E40A7D500164D24 /* AppDelegate.swift */; };
 		E19200C81E40A7D500164D24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19200C71E40A7D500164D24 /* ViewController.swift */; };
 		E19200CB1E40A7D500164D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19200C91E40A7D500164D24 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		3C02A63117F96B1D66EC0C35 /* Pods-Breezeisnice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezeisnice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezeisnice/Pods-Breezeisnice.debug.xcconfig"; sourceTree = "<group>"; };
 		542FA1F5C200F87EAF40E264 /* Pods-Breezeisnice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezeisnice.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezeisnice/Pods-Breezeisnice.release.xcconfig"; sourceTree = "<group>"; };
 		6E06D7493E8E38FA4544C4C0 /* Pods_Breezeisnice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezeisnice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E161CE691E419698008FD324 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E161CE6D1E419EB2008FD324 /* UserStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
 		E19200C21E40A7D500164D24 /* Breezeisnice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezeisnice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19200C51E40A7D500164D24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E19200C71E40A7D500164D24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				E19200CE1E40A7D500164D24 /* LaunchScreen.storyboard */,
 				E19200D11E40A7D500164D24 /* Info.plist */,
 				E19B21081E416FC000667601 /* OpenWeatherMap.swift */,
+				E161CE691E419698008FD324 /* Location.swift */,
+				E161CE6D1E419EB2008FD324 /* UserStatus.swift */,
 			);
 			path = Breezeisnice;
 			sourceTree = "<group>";
@@ -354,8 +360,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E161CE6E1E419EB2008FD324 /* UserStatus.swift in Sources */,
 				E19200C81E40A7D500164D24 /* ViewController.swift in Sources */,
 				E19B21071E416F2500667601 /* OpenWeatherAPIConst.swift in Sources */,
+				E161CE6A1E419698008FD324 /* Location.swift in Sources */,
 				E19200C61E40A7D500164D24 /* AppDelegate.swift in Sources */,
 				E19B21091E416FC000667601 /* OpenWeatherMap.swift in Sources */,
 			);

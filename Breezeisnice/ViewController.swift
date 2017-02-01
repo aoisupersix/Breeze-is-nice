@@ -11,14 +11,22 @@ import CoreLocation
 import SwiftyJSON
 import SwiftSpinner
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMapDelegate {
     
     /*
-     *  緯度経度
+     *  OpenWeatherMap
      */
-    var latitude: Double?
-    var longitude: Double?
+    var openWeatherMap: OpenWeatherMap?
     
+    /*
+     *  各種計算
+     */
+    //let calc: Calc?
+    
+    //AppDelegate
+    let app: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    //位置情報
     var locationManager: CLLocationManager?
 
     override func viewDidLoad() {
@@ -38,6 +46,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locationManager?.headingOrientation = .portrait //デバイスのどの向きを上とするか
             locationManager?.startUpdatingHeading()
         }
+        
+        //OpenWeathermap
+        openWeatherMap = OpenWeatherMap(delegate: self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -87,11 +98,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         if let location = manager.location
         {
-            latitude = location.coordinate.latitude
-            longitude = location.coordinate.longitude
-            print("緯度\(latitude)")
-            print("経度\(longitude)")
-            //get(lat: latitude!, lon: longitude!)
+            Location.sharedManager.latitude = location.coordinate.latitude
+            Location.sharedManager.longitude = location.coordinate.longitude
+            print("緯度\(Location.sharedManager.latitude)")
+            print("経度\(Location.sharedManager.longitude)")
+            openWeatherMap?.get(lat: Location.sharedManager.latitude!, lon: Location.sharedManager.longitude!)
             if CLLocationManager.locationServicesEnabled() {
                 print("locationManager: stop")
                 locationManager?.stopUpdatingLocation()
@@ -106,6 +117,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("locationManager: start")
         SwiftSpinner.show("位置情報取得中")
     }
+    
+    /*
+     *  OpenWeatherMap
+     */
+    func openWeather_CompleteSession() {
+        SwiftSpinner.hide()
+        //速度計算
+        Location.sharedManager.relativeSpeed = UserStatus.sharedManager.calcVelocity(wind: Location.sharedManager.wind_speed!, temp: Location.sharedManager.temp!)
+        print("RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
+    }
+    
+    func openWeather_ErrorSession(error: Error) {
+        
+    }
+    
     
     /*
      *  汎用ダイアログ
