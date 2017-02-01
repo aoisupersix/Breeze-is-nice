@@ -13,18 +13,19 @@ import SwiftSpinner
 
 class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMapDelegate {
     
+    @IBOutlet var MeterImageView: UIImageView!
+    
+    /*
+     * 角度関連
+     */
+    var angle: Double = 0   //メータの回転角度
+    var orientation: Double = 0  //端末が向いている方向
+    var direction: Double = 0   //端末が向いている方向から風向き
+    
     /*
      *  OpenWeatherMap
      */
     var openWeatherMap: OpenWeatherMap?
-    
-    /*
-     *  各種計算
-     */
-    //let calc: Calc?
-    
-    //AppDelegate
-    let app: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     
     //位置情報
     var locationManager: CLLocationManager?
@@ -63,6 +64,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateTimer(_:)), userInfo: nil, repeats: true)    }
+    
     /*
      *  位置情報delegate
      */
@@ -79,19 +83,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     }
     //向き変更
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
-//        if (self.app.wind_deg != nil){
-//            orientation = newHeading.magneticHeading
-//            
-//            //
-//            if(orientation <= app.wind_deg!){
-//                //風向きの方が大きいので、風向き-角度だけ回転させる
-//                direction = app.wind_deg! - orientation
-//            }else{
-//                direction = 360 - (orientation - app.wind_deg!)
-//            }
-//            
-//            updateLabel()
-//        }
+        if (Location.sharedManager.wind_deg != nil){
+            orientation = newHeading.magneticHeading
+            
+            //
+            if(orientation <= Location.sharedManager.wind_deg!){
+                //風向きの方が大きいので、風向き-角度だけ回転させる
+                direction = Location.sharedManager.wind_deg! - orientation
+            }else{
+                direction = 360 - (orientation - Location.sharedManager.wind_deg!)
+            }
+            
+            updateLabel()
+        }
     }
     //位置情報取得
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -132,6 +136,58 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         
     }
     
+    /*
+     *  タイマーアップデート
+     */
+    func updateTimer(_ sender: AnyObject) {
+        if(Location.sharedManager.wind_deg != nil)
+        {
+            rotateMeter(direction)
+        }
+    }
+    
+    /*
+     *  回転
+     */
+    func rotateMeter(_ angle: Double) {
+        let angleRad: CGFloat = CGFloat(((angle) * M_PI) / 180)
+        UIView.animate(withDuration: 0.1,
+                       animations: { () -> Void in
+                        // 回転用のアフィン行列を生成.
+                        self.MeterImageView.transform = CGAffineTransform(rotationAngle: angleRad)
+        },
+                       completion: { (Bool) -> Void in
+                        self.angle = angle
+        })
+    }
+    
+    //ラベル更新
+    func updateLabel() {
+        if (Location.sharedManager.isWeatherEnabled() && Location.sharedManager.isLocationEnabled()){
+            //label.text = "wind speed\n\(self.app.wind_speed!)m/s"
+            
+            //相対速度計算
+            let angleSpeed = Location.sharedManager.relativeSpeed! / 90   //1度当たりの相対速度
+            var speed = ""  //表示する相対速度
+            
+            if(angle <= 90){
+                //向かい風 -> 左横風
+                speed = "-\(angleSpeed * (90 - angle))"
+            }else if(angle <= 180){
+                //左横風 -> 追い風
+                speed = "+\(angleSpeed * (90 - angle))"
+            }else if(angle <= 270){
+                //追い風 -> 右横風
+                speed = "+\(angleSpeed * fabs(270 - angle))"
+            }else{
+                //右横風 -> 向かい風
+                speed = "-\(angleSpeed * (angle - 270))"
+            }
+            print("orientation:\(orientation),wind:\(Location.sharedManager.wind_deg!),direct:\(direction),angle:\(angle)")
+            
+            //label2.text = "speed\n\(speed)km/h"
+        }
+    }
     
     /*
      *  汎用ダイアログ
