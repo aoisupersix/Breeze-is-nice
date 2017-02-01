@@ -71,6 +71,27 @@ class UserStatus {
         let total = sResist * velo
         
          return  total / sResist
-
+    }
+    
+    func calcRelative(angle: Double) -> String {
+        //相対速度計算
+        let angleSpeed = Location.sharedManager.relativeSpeed! / 90   //1度当たりの相対速度
+        var speed = ""  //表示する相対速度
+        
+        if(angle <= 90){
+            //向かい風 -> 左横風
+            speed = String(format:"-%04d",fabs(angleSpeed * (90 - angle)))
+        }else if(angle <= 180){
+            //左横風 -> 追い風
+            speed = "+\(fabs(angleSpeed * (90 - angle)))"
+        }else if(angle <= 270){
+            //追い風 -> 右横風
+            speed = "+\(fabs(angleSpeed * fabs(270 - angle)))"
+        }else{
+            //右横風 -> 向かい風
+            speed = "-\(fabs(angleSpeed * (angle - 270)))"
+        }
+        
+        return speed
     }
 }

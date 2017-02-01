@@ -16,6 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     
     @IBOutlet var MeterImageView: UIImageView!
     @IBOutlet var BgMap: MKMapView!
+    @IBOutlet var WindSpeedLabel: UILabel!
+    @IBOutlet var RelativeSpeedLabel: UILabel!
     @IBAction func refresh_Click(_ sender: Any) {
         //スピナー表示
         SwiftSpinner.show("位置情報取得中")
@@ -133,6 +135,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         print("RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
         mapPosition(latD: 10000,lonD: 10000,anim: true)
         updateLabels()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager?.startUpdatingHeading()
+        }
     }
     
     func openWeather_ErrorSession(error: Error) {
@@ -170,28 +175,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      */
     func updateLabels() {
         if (Location.sharedManager.isWeatherEnabled() && Location.sharedManager.isLocationEnabled()){
-            //label.text = "wind speed\n\(self.app.wind_speed!)m/s"
+            WindSpeedLabel.text = "風速: \(Location.sharedManager.wind_speed!) m/s"
             
-            //相対速度計算
-            let angleSpeed = Location.sharedManager.relativeSpeed! / 90   //1度当たりの相対速度
-            var speed = ""  //表示する相対速度
-            
-            if(angle <= 90){
-                //向かい風 -> 左横風
-                speed = "-\(angleSpeed * (90 - angle))"
-            }else if(angle <= 180){
-                //左横風 -> 追い風
-                speed = "+\(angleSpeed * (90 - angle))"
-            }else if(angle <= 270){
-                //追い風 -> 右横風
-                speed = "+\(angleSpeed * fabs(270 - angle))"
-            }else{
-                //右横風 -> 向かい風
-                speed = "-\(angleSpeed * (angle - 270))"
-            }
+
             print("orientation:\(orientation),wind:\(Location.sharedManager.wind_deg!),direct:\(direction),angle:\(angle)")
             
-            //label2.text = "speed\n\(speed)km/h"
+            RelativeSpeedLabel.text = "速度: \(UserStatus.sharedManager.calcRelative(angle: angle))km/h"
         }
     }
     
@@ -199,7 +188,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      *  回転角度更新
      */
     func updateAngle(){
-        if (Location.sharedManager.isLocationEnabled()){
+        if (Location.sharedManager.isWeatherEnabled()){
             if(orientation <= Location.sharedManager.wind_deg!){
                 //風向きの方が大きいので、風向き-角度だけ回転させる
                 direction = Location.sharedManager.wind_deg! - orientation
