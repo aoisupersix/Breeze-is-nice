@@ -33,14 +33,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         super.viewDidLoad()
         
         //スピナー表示
-        //SwiftSpinner.show("位置情報取得中")
+        SwiftSpinner.show("位置情報取得中")
         
         if CLLocationManager.locationServicesEnabled() {
             //位置情報
             locationManager = CLLocationManager()
             locationManager?.delegate = self
-            locationManager?.startUpdatingLocation()
-        
+            locationManager?.distanceFilter = 1000
+            locationManager?.requestLocation()
             //向き
             locationManager?.headingFilter = 1   //何度動いたら更新するか
             locationManager?.headingOrientation = .portrait //デバイスのどの向きを上とするか
