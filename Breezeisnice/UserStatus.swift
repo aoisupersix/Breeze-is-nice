@@ -80,16 +80,16 @@ class UserStatus {
         
         if(angle <= 90){
             //向かい風 -> 左横風
-            speed = String(format:"-%04d",fabs(angleSpeed * (90 - angle)))
+            speed = String(format:"-%.2f",fabs(angleSpeed * (90 - angle)))
         }else if(angle <= 180){
             //左横風 -> 追い風
-            speed = "+\(fabs(angleSpeed * (90 - angle)))"
+            speed = String(format:"+%.2f",fabs(angleSpeed * (90 - angle)))
         }else if(angle <= 270){
             //追い風 -> 右横風
-            speed = "+\(fabs(angleSpeed * fabs(270 - angle)))"
+            speed = String(format:"+%.2f",fabs(angleSpeed * fabs(270 - angle)))
         }else{
             //右横風 -> 向かい風
-            speed = "-\(fabs(angleSpeed * (angle - 270)))"
+            speed = String(format:"-%.2f",fabs(angleSpeed * (angle - 270)))
         }
         
         return speed
