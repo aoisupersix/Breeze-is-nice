@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kMf-cW-B8i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3Sh-O8-BZu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,72 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--WeatherView Controller-->
+        <scene sceneID="4Cj-dD-yhR">
+            <objects>
+                <viewController title="WeatherView Controller" id="qU5-hw-wAO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Z5s-Xi-j8v"/>
+                        <viewControllerLayoutGuide type="bottom" id="EBp-QI-hwx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0dK-Es-GqV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BUC-J7-DW6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ok-iE-z3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2462" y="-1040"/>
+        </scene>
+        <!--WindView Controller-->
+        <scene sceneID="vfU-Pm-MUG">
+            <objects>
+                <viewController storyboardIdentifier="WindViewController" title="WindView Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ChO-0e-j3G" customClass="WindViewController" customModule="Breezeisnice" customModuleProvider="target" sceneMemberID="viewController">
+                    <containerView key="view" opaque="NO" contentMode="scaleToFill" id="nFL-c2-yKT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <segue destination="BYZ-38-t0r" kind="embed" identifier="MainViewContainer" id="plj-f6-Rjz"/>
+                        </connections>
+                    </containerView>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="md5-7X-4Ld"/>
+                    <navigationItem key="navigationItem" title="Breeze is nice" id="IHi-hk-gkp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="DKf-xS-2pY">
+                            <connections>
+                                <action selector="refresh:" destination="ChO-0e-j3G" id="usv-ca-oGW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qXu-af-fmF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2462" y="-1840"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="3ku-1B-ZWS">
+            <objects>
+                <tabBarController id="3Sh-O8-BZu" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="DHL-cw-Dau"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="mE3-Gr-GqO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="kMf-cW-B8i" kind="relationship" relationship="viewControllers" id="VTD-Oe-KFS"/>
+                        <segue destination="Kxb-8R-ArK" kind="relationship" relationship="viewControllers" id="DME-uc-ptf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EEp-3m-VeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265" y="-1507"/>
+        </scene>
         <!--Main View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Main View" id="BYZ-38-t0r" customClass="ViewController" customModule="Breezeisnice" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WindView" title="Main View" id="BYZ-38-t0r" customClass="ViewController" customModule="Breezeisnice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -136,11 +198,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Breeze is nice" id="gXw-YW-iVd">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="2gZ-Xr-xZN">
-                            <connections>
-                                <action selector="refresh_Click:" destination="BYZ-38-t0r" id="1gY-6E-p24"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="2gZ-Xr-xZN"/>
                     </navigationItem>
                     <connections>
                         <outlet property="BgMap" destination="MNl-nP-Vnq" id="yn7-Kn-oba"/>
@@ -153,12 +211,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1184.8" y="-502.39880059970017"/>
+            <point key="canvasLocation" x="3359" y="-1840"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--WindView NavigationController-->
         <scene sceneID="jRm-gY-KLT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kMf-cW-B8i" sceneMemberID="viewController">
+                <navigationController title="WindView NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kMf-cW-B8i" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="mQG-tG-3FZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WGe-6d-BB4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -166,12 +225,31 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="YQq-MB-bLa"/>
+                        <segue destination="ChO-0e-j3G" kind="relationship" relationship="rootViewController" id="nU4-zp-pK5"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NTd-jl-Son" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="264.80000000000001" y="-1185.1574212893554"/>
+            <point key="canvasLocation" x="1409" y="-1840"/>
+        </scene>
+        <!--WeatherView Navigation Controller-->
+        <scene sceneID="TBl-yc-Xxm">
+            <objects>
+                <navigationController title="WeatherView Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Kxb-8R-ArK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 2" id="e6x-ei-rf1"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mHE-MA-Ucn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qU5-hw-wAO" kind="relationship" relationship="rootViewController" id="YTj-hM-g9B"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WwO-9h-x8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="-1040"/>
         </scene>
     </scenes>
     <resources>

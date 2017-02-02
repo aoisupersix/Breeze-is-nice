@@ -12,7 +12,7 @@ import SwiftyJSON
 import SwiftSpinner
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMapDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMapDelegate, WindViewControllerDelegate {
     
     @IBOutlet var MeterImageView: UIImageView!
     @IBOutlet var BgMap: MKMapView!
@@ -20,10 +20,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     @IBOutlet var RelativeSpeedLabel: UILabel!
     @IBOutlet var WindDegLabel: UILabel!
     @IBOutlet var TempLabel: UILabel!
-    @IBAction func refresh_Click(_ sender: Any) {
+    
+    /*
+     *  親ビューのdelegate.
+     *  リフレッシュボタンクリック
+     */
+    func refresh(_ sender: Any) {
         if CLLocationManager.locationServicesEnabled() {
             print("Refresh")
-            locationManager?.requestLocation()
+            app.locationManager?.requestLocation()
             if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
                 //スピナー表示
                 SwiftSpinner.show(progress: 0,title: "位置情報取得中")
@@ -51,8 +56,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      */
     var openWeatherMap: OpenWeatherMap?
     
-    //位置情報
-    var locationManager: CLLocationManager?
+    /*
+     *  AppDelegate
+     */
+    let app: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,14 +67,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         if CLLocationManager.locationServicesEnabled() {
             
             //位置情報
-            locationManager = CLLocationManager()
-            locationManager?.delegate = self
-            locationManager?.distanceFilter = 1000
-            locationManager?.requestLocation()
+            app.locationManager = CLLocationManager()
+            app.locationManager?.delegate = self
+            app.locationManager?.distanceFilter = 1000
+            app.locationManager?.requestLocation()
             //向き
-            locationManager?.headingFilter = 1   //何度動いたら更新するか
-            locationManager?.headingOrientation = .portrait //デバイスのどの向きを上とするか
-            locationManager?.startUpdatingHeading()
+            app.locationManager?.headingFilter = 1   //何度動いたら更新するか
+            app.locationManager?.headingOrientation = .portrait //デバイスのどの向きを上とするか
+            app.locationManager?.startUpdatingHeading()
             
             if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
                 //スピナー表示
@@ -80,21 +87,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         //OpenWeathermap
         openWeatherMap = OpenWeatherMap(delegate: self)
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.stopUpdatingLocation()
-            locationManager?.stopUpdatingHeading()
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateTimer(_:)), userInfo: nil, repeats: true)    }
+        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateTimer(_:)), userInfo: nil, repeats: true)
+
+        if CLLocationManager.locationServicesEnabled() {
+            app.locationManager?.startUpdatingHeading()
+        }
+    }
     
     /*
      *  位置情報delegate
@@ -103,7 +107,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined:
-            locationManager?.requestWhenInUseAuthorization()
+            app.locationManager?.requestWhenInUseAuthorization()
         case .restricted, .denied:
             break
         case .authorizedAlways, .authorizedWhenInUse:
@@ -134,7 +138,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             openWeatherMap?.get(lat: Location.sharedManager.latitude!, lon: Location.sharedManager.longitude!)
             if CLLocationManager.locationServicesEnabled() {
                 print("locationManager: stop")
-                locationManager?.stopUpdatingLocation()
+                app.locationManager?.stopUpdatingLocation()
             }
         }
     }
@@ -159,7 +163,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             self.updateAngle()
             self.updateLabels()
             if CLLocationManager.locationServicesEnabled() {
-                self.locationManager?.startUpdatingHeading()
+                self.app.locationManager?.startUpdatingHeading()
             }
         }
  
@@ -175,7 +179,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      *  タイマーアップデート
      */
     func updateTimer(_ sender: AnyObject) {
-        if(Location.sharedManager.wind_deg != nil)
+        if(Location.sharedManager.wind_deg != nil && CLLocationManager.headingAvailable())
         {
             rotateMeter(direction)
         }
@@ -184,6 +188,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             progress += 0.005 + rand
             SwiftSpinner.show(progress: progress, title: "位置情報取得中")
         }
+        print("angle:\(angle),direction:\(direction),orientation:\(orientation)")
     }
     
     /*
@@ -210,7 +215,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             RelativeSpeedLabel.text = "速度: \(UserStatus.sharedManager.calcRelative(wind: Location.sharedManager.wind_speed!,temp: Location.sharedManager.temp!,angle: direction))km/h"
             WindDegLabel.text = "風向き: \(Location.sharedManager.getWindDegString())"
             TempLabel.text = String(format: "%.1f℃", Location.sharedManager.temp!)
-            print("wind_deg:\(Location.sharedManager.wind_deg!)")
         }
     }
     

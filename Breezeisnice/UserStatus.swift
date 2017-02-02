@@ -91,7 +91,6 @@ class UserStatus {
             power = calcPower(wind: wind, temp: temp, speed: speed)
             
         }while(fabs(power - normalP) <= fabs(beforepower - normalP))
-        print("windSpeed:\(speed)")
         
         let facingSpeed = self.normalVelo - speed   //向かい風時の相対速度
         let chaseSpeed = facingSpeed / 2    //追い風時の相対速度。向かい風の半分とする
