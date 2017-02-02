@@ -20,13 +20,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     @IBOutlet var RelativeSpeedLabel: UILabel!
     @IBAction func refresh_Click(_ sender: Any) {
         //スピナー表示
-        SwiftSpinner.show("位置情報取得中")
+        SwiftSpinner.show(progress: 0,title:"位置情報取得中")
+        progress = 0.0
+        isSpinnerEnabled = true
+
         if CLLocationManager.locationServicesEnabled() {
             print("Refresh")
             locationManager?.requestLocation()
         }
     }
     
+    /*
+     *  スピナーの進歩状況
+     */
+    var progress: Double = 0.0
+    var isSpinnerEnabled = false
     
     /*
      * 角度関連
@@ -47,7 +55,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         super.viewDidLoad()
         
         //スピナー表示
-        SwiftSpinner.show("位置情報取得中")
+        SwiftSpinner.show(progress: 0,title: "位置情報取得中")
+        progress = 0.0
+        isSpinnerEnabled = true
+        
         
         if CLLocationManager.locationServicesEnabled() {
             //位置情報
@@ -105,6 +116,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         
         if let location = manager.location
         {
+            SwiftSpinner.show(progress: 1,title: "位置情報取得中")
+            isSpinnerEnabled = false;
             Location.sharedManager.latitude = location.coordinate.latitude
             Location.sharedManager.longitude = location.coordinate.longitude
             print("緯度\(Location.sharedManager.latitude)")
@@ -157,6 +170,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         if(Location.sharedManager.wind_deg != nil)
         {
             rotateMeter(direction)
+        }
+        if isSpinnerEnabled {
+            let rand: Double = Double(arc4random_uniform(10)) / 1000
+            progress += 0.005 + rand
+            SwiftSpinner.show(progress: progress, title: "位置情報取得中")
         }
     }
     
