@@ -75,6 +75,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="TempLabel" text="14℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FVG-7e-aN7">
+                                <rect key="frame" x="280" y="600" width="86" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="37"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -95,6 +102,7 @@
                         <outlet property="BgMap" destination="MNl-nP-Vnq" id="yn7-Kn-oba"/>
                         <outlet property="MeterImageView" destination="VMT-nP-7vM" id="Cmp-5n-9Bj"/>
                         <outlet property="RelativeSpeedLabel" destination="lNg-DN-Hzy" id="qGd-0e-7q2"/>
+                        <outlet property="TempLabel" destination="FVG-7e-aN7" id="Wgy-yU-8ve"/>
                         <outlet property="WindDegLabel" destination="6AR-ig-RTw" id="iDW-VF-BzP"/>
                         <outlet property="WindSpeedLabel" destination="OSy-D3-iH0" id="XEl-29-7HA"/>
                     </connections>

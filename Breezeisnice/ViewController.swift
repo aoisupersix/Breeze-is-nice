@@ -19,6 +19,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     @IBOutlet var WindSpeedLabel: UILabel!
     @IBOutlet var RelativeSpeedLabel: UILabel!
     @IBOutlet var WindDegLabel: UILabel!
+    @IBOutlet var TempLabel: UILabel!
     @IBAction func refresh_Click(_ sender: Any) {
         //スピナー表示
         SwiftSpinner.show(progress: 0,title:"位置情報取得中")
@@ -148,7 +149,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             SwiftSpinner.hide()
             //速度計算
             Location.sharedManager.relativeSpeed = UserStatus.sharedManager.calcVelocity(wind: Location.sharedManager.wind_speed!, temp: Location.sharedManager.temp!)
-            print("RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
+            print("wind_speed:\(Location.sharedManager.wind_speed!),RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
             self.mapPosition(latD: 10000,lonD: 10000,anim: true)
             self.updateAngle()
             self.updateLabels()
@@ -202,7 +203,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             WindSpeedLabel.text = "風速: \(Location.sharedManager.wind_speed!) m/s"
             RelativeSpeedLabel.text = "速度: \(UserStatus.sharedManager.calcRelative(angle: direction))km/h"
             WindDegLabel.text = "風向き: \(Location.sharedManager.getWindDegString())"
-
+            TempLabel.text = String(format: "%.1f℃", Location.sharedManager.temp!)
             print("wind_deg:\(Location.sharedManager.wind_deg!)")
         }
     }
