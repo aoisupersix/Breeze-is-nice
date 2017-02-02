@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,22 +25,20 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="BgMap" mapType="standard" showsUserLocation="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNl-nP-Vnq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="P2X-vz-kev"/>
-                                    <constraint firstAttribute="height" constant="667" id="tak-oj-Phc"/>
+                                    <constraint firstAttribute="width" secondItem="MNl-nP-Vnq" secondAttribute="height" multiplier="375:667" id="fJh-VG-ZLH"/>
                                 </constraints>
                             </mapView>
-                            <visualEffectView opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-mH-n25">
-                                <rect key="frame" x="0.0" y="506" width="375" height="161"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="BOt-TO-DJW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                            <visualEffectView opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-mH-n25">
+                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BOt-TO-DJW">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roY-tU-Irr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="rF0-1b-ghM">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="161"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -48,47 +47,92 @@
                                         </visualEffectView>
                                     </subviews>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xeK-mH-n25" secondAttribute="height" multiplier="15:8" id="Ypp-wc-9pf"/>
+                                </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="Meter" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="VMT-nP-7vM">
-                                <rect key="frame" x="16" y="521" width="123" height="138"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="WindSpeedLabel" text="風速: 99.99 m/s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSy-D3-iH0">
-                                <rect key="frame" x="147" y="521" width="212" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="RelativeSpeedLabel" text="速度: 10 km/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-DN-Hzy">
-                                <rect key="frame" x="147" y="560" width="212" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="WindDegLabel" text="風向き: 西北西" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-ig-RTw">
-                                <rect key="frame" x="157" y="600" width="115" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="TempLabel" text="14℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FVG-7e-aN7">
-                                <rect key="frame" x="280" y="600" width="86" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="37"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" restorationIdentifier="ADView" translatesAutoresizingMaskIntoConstraints="NO" id="zZ1-q2-6kj">
+                                <rect key="frame" x="0.0" y="467" width="375" height="150"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Meter" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="VMT-nP-7vM">
+                                        <rect key="frame" x="17" y="10" width="123" height="131"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="VMT-nP-7vM" secondAttribute="height" multiplier="123:131" id="BuY-lu-zcc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindSpeedLabel" text="風速: 99.99 m/s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="OSy-D3-iH0">
+                                        <rect key="frame" x="148" y="10" width="212" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="OSy-D3-iH0" secondAttribute="height" multiplier="212:29" id="iyZ-oG-J90"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="RelativeSpeedLabel" text="速度: 10 km/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-DN-Hzy">
+                                        <rect key="frame" x="158" y="50" width="202" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="lNg-DN-Hzy" secondAttribute="height" multiplier="202:29" id="zMU-xc-tLk"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindDegLabel" text="風向き: 西北西" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-ig-RTw">
+                                        <rect key="frame" x="158" y="88" width="115" height="58"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="6AR-ig-RTw" secondAttribute="height" multiplier="115:58" id="qwg-zV-Dhh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="TempLabel" text="14℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FVG-7e-aN7">
+                                        <rect key="frame" x="290" y="95" width="77" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FVG-7e-aN7" secondAttribute="height" multiplier="7:4" id="OpN-Pz-n5m"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="37"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="VMT-nP-7vM" firstAttribute="leading" secondItem="zZ1-q2-6kj" secondAttribute="leading" constant="17" id="0Am-iJ-9Vf"/>
+                                    <constraint firstAttribute="bottom" secondItem="FVG-7e-aN7" secondAttribute="bottom" constant="11.5" id="0fc-5t-WNj"/>
+                                    <constraint firstItem="VMT-nP-7vM" firstAttribute="top" secondItem="zZ1-q2-6kj" secondAttribute="top" constant="10" id="3bR-Gj-4TZ"/>
+                                    <constraint firstItem="lNg-DN-Hzy" firstAttribute="leading" secondItem="VMT-nP-7vM" secondAttribute="trailing" constant="18" id="7nl-ha-159"/>
+                                    <constraint firstItem="6AR-ig-RTw" firstAttribute="top" secondItem="lNg-DN-Hzy" secondAttribute="bottom" constant="9" id="FSz-s2-LF4"/>
+                                    <constraint firstAttribute="trailing" secondItem="OSy-D3-iH0" secondAttribute="trailing" constant="15" id="GKv-Qy-brm"/>
+                                    <constraint firstAttribute="trailing" secondItem="lNg-DN-Hzy" secondAttribute="trailing" constant="15" id="HCL-t7-y7l"/>
+                                    <constraint firstAttribute="bottom" secondItem="6AR-ig-RTw" secondAttribute="bottom" constant="4" id="Ilh-wN-17R"/>
+                                    <constraint firstItem="FVG-7e-aN7" firstAttribute="top" secondItem="lNg-DN-Hzy" secondAttribute="bottom" constant="16" id="L0q-aY-Yiz"/>
+                                    <constraint firstAttribute="width" secondItem="zZ1-q2-6kj" secondAttribute="height" multiplier="5:2" id="L1c-uo-aRe"/>
+                                    <constraint firstItem="lNg-DN-Hzy" firstAttribute="top" secondItem="OSy-D3-iH0" secondAttribute="bottom" constant="11" id="Omf-s4-GOM"/>
+                                    <constraint firstItem="6AR-ig-RTw" firstAttribute="leading" secondItem="VMT-nP-7vM" secondAttribute="trailing" constant="18" id="Vq2-na-i8L"/>
+                                    <constraint firstItem="OSy-D3-iH0" firstAttribute="top" secondItem="zZ1-q2-6kj" secondAttribute="top" constant="10" id="Xoy-2t-rYp"/>
+                                    <constraint firstItem="FVG-7e-aN7" firstAttribute="leading" secondItem="6AR-ig-RTw" secondAttribute="trailing" constant="17" id="YEP-dC-F1C"/>
+                                    <constraint firstAttribute="trailing" secondItem="FVG-7e-aN7" secondAttribute="trailing" constant="8" id="Z7S-R2-dMP"/>
+                                    <constraint firstAttribute="trailing" secondItem="FVG-7e-aN7" secondAttribute="trailing" constant="8" id="ZZ1-88-cez"/>
+                                    <constraint firstItem="OSy-D3-iH0" firstAttribute="leading" secondItem="VMT-nP-7vM" secondAttribute="trailing" constant="8" id="a3I-oR-zGO"/>
+                                    <constraint firstAttribute="bottom" secondItem="VMT-nP-7vM" secondAttribute="bottom" constant="9" id="qLA-dD-Ima"/>
+                                    <constraint firstItem="FVG-7e-aN7" firstAttribute="leading" secondItem="6AR-ig-RTw" secondAttribute="trailing" constant="17" id="vCi-vH-PUc"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="MNl-nP-Vnq" secondAttribute="trailing" id="6px-K1-3U1"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MNl-nP-Vnq" secondAttribute="bottom" id="BIc-ys-Dfw"/>
-                            <constraint firstItem="MNl-nP-Vnq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="PcC-Cd-Ab3"/>
-                            <constraint firstItem="MNl-nP-Vnq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mDL-au-z7O"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xeK-mH-n25" secondAttribute="bottom" id="0O1-tf-LUs"/>
+                            <constraint firstItem="xeK-mH-n25" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4JT-aM-YHj"/>
+                            <constraint firstItem="zZ1-q2-6kj" firstAttribute="top" secondItem="xeK-mH-n25" secondAttribute="top" id="KqG-la-UqD"/>
+                            <constraint firstItem="MNl-nP-Vnq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f6P-JT-P0q"/>
+                            <constraint firstItem="MNl-nP-Vnq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kP7-eM-VEi"/>
+                            <constraint firstItem="zZ1-q2-6kj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kqV-EO-rOa"/>
+                            <constraint firstAttribute="trailing" secondItem="MNl-nP-Vnq" secondAttribute="trailing" id="p9p-F3-21n"/>
+                            <constraint firstAttribute="trailing" secondItem="xeK-mH-n25" secondAttribute="trailing" id="qPt-pT-Ef8"/>
+                            <constraint firstAttribute="trailing" secondItem="zZ1-q2-6kj" secondAttribute="trailing" id="qTS-66-xs8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MNl-nP-Vnq" secondAttribute="bottom" id="u4p-ut-a3F"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Breeze is nice" id="gXw-YW-iVd">
