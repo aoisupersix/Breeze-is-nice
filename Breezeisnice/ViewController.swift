@@ -21,14 +21,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     @IBOutlet var WindDegLabel: UILabel!
     @IBOutlet var TempLabel: UILabel!
     @IBAction func refresh_Click(_ sender: Any) {
-        //スピナー表示
-        SwiftSpinner.show(progress: 0,title:"位置情報取得中")
-        progress = 0.0
-        isSpinnerEnabled = true
-
         if CLLocationManager.locationServicesEnabled() {
             print("Refresh")
             locationManager?.requestLocation()
+            if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
+                //スピナー表示
+                SwiftSpinner.show(progress: 0,title: "位置情報取得中")
+                progress = 0.0
+                isSpinnerEnabled = true
+            }
         }
     }
     
@@ -56,13 +57,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //スピナー表示
-        SwiftSpinner.show(progress: 0,title: "位置情報取得中")
-        progress = 0.0
-        isSpinnerEnabled = true
-        
-        
         if CLLocationManager.locationServicesEnabled() {
+            
             //位置情報
             locationManager = CLLocationManager()
             locationManager?.delegate = self
@@ -72,6 +68,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             locationManager?.headingFilter = 1   //何度動いたら更新するか
             locationManager?.headingOrientation = .portrait //デバイスのどの向きを上とするか
             locationManager?.startUpdatingHeading()
+            
+            if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
+                //スピナー表示
+                SwiftSpinner.show(progress: 0,title: "位置情報取得中")
+                progress = 0.0
+                isSpinnerEnabled = true
+            }
         }
         
         //OpenWeathermap
@@ -104,6 +107,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         case .restricted, .denied:
             break
         case .authorizedAlways, .authorizedWhenInUse:
+            //スピナー表示
+            SwiftSpinner.show(progress: 0,title: "位置情報取得中")
+            progress = 0.0
+            isSpinnerEnabled = true
             break
         }
     }
@@ -133,11 +140,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("error")
-        self.showDialog(title: "エラー", mes: "位置情報を取得できませんでした。再度取得します。")
-        locationManager?.requestLocation()
-        print("locationManager: start")
-        SwiftSpinner.show("位置情報取得中")
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
+            self.showDialog(title: "エラー", mes: "位置情報を取得できませんでした。再度取得する場合は右上の更新ボタンを押してください。")
+        }else if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.restricted){
+            self.showDialog(title: "エラー", mes: "位置情報の使用が許可されていません。端末の設定から位置情報の使用を許可してください。")
+        }
     }
     
     /*
@@ -161,6 +168,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     func openWeather_ErrorSession(error: Error) {
         //TODO
         print(error)
+        SwiftSpinner.hide()
     }
     
     /*
