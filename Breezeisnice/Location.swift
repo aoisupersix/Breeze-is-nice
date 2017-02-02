@@ -47,12 +47,7 @@ class Location{
             return true
         }
     }
-    
-    /*
-     * 相対速度
-     */
-    var relativeSpeed: Double?
-    
+        
     /*
      *  風向きを16方位で返す
      */

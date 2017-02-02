@@ -54,6 +54,5 @@ class OpenWeatherMap{
         Location.sharedManager.temp = json["main"]["temp"].double
         Location.sharedManager.wind_speed = json["wind"]["speed"].double
         Location.sharedManager.wind_deg = json["wind"]["deg"].double
-        Location.sharedManager.wind_speed = 0.0 //Debug
     }
 }

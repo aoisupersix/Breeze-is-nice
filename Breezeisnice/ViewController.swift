@@ -148,8 +148,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         DispatchQueue.main.async {
             SwiftSpinner.hide()
             //速度計算
-            Location.sharedManager.relativeSpeed = UserStatus.sharedManager.calcVelocity(wind: Location.sharedManager.wind_speed!, temp: Location.sharedManager.temp!)
-            print("wind_speed:\(Location.sharedManager.wind_speed!),RelativeSpeed=\(Location.sharedManager.relativeSpeed)")
             self.mapPosition(latD: 10000,lonD: 10000,anim: true)
             self.updateAngle()
             self.updateLabels()
@@ -201,7 +199,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     func updateLabels() {
         if (Location.sharedManager.isWeatherEnabled() && Location.sharedManager.isLocationEnabled()){
             WindSpeedLabel.text = "風速: \(Location.sharedManager.wind_speed!) m/s"
-            RelativeSpeedLabel.text = "速度: \(UserStatus.sharedManager.calcRelative(angle: direction))km/h"
+            RelativeSpeedLabel.text = "速度: \(UserStatus.sharedManager.calcRelative(wind: Location.sharedManager.wind_speed!,temp: Location.sharedManager.temp!,angle: direction))km/h"
             WindDegLabel.text = "風向き: \(Location.sharedManager.getWindDegString())"
             TempLabel.text = String(format: "%.1f℃", Location.sharedManager.temp!)
             print("wind_deg:\(Location.sharedManager.wind_deg!)")
