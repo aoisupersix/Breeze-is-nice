@@ -12,7 +12,7 @@ import SwiftyJSON
 import SwiftSpinner
 import MapKit
 
-class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMapDelegate, WindViewControllerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMapDelegate, WindViewControllerDelegate, ApplicationDelegate{
     
     @IBOutlet var MeterImageView: UIImageView!
     @IBOutlet var BgMap: MKMapView!
@@ -28,7 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     func refresh(_ sender: Any) {
         if CLLocationManager.locationServicesEnabled() {
             print("Refresh")
-            app.locationManager?.requestLocation()
+            locationManager?.requestLocation()
             if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
                 //スピナー表示
                 SwiftSpinner.show(progress: 0,title: "位置情報取得中")
@@ -60,6 +60,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      *  AppDelegate
      */
     let app: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    //位置情報
+    var locationManager: CLLocationManager?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,14 +70,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         if CLLocationManager.locationServicesEnabled() {
             
             //位置情報
-            app.locationManager = CLLocationManager()
-            app.locationManager?.delegate = self
-            app.locationManager?.distanceFilter = 1000
-            app.locationManager?.requestLocation()
+            locationManager = CLLocationManager()
+            locationManager?.delegate = self
+            locationManager?.distanceFilter = 1000
+            locationManager?.requestLocation()
             //向き
-            app.locationManager?.headingFilter = 1   //何度動いたら更新するか
-            app.locationManager?.headingOrientation = .portrait //デバイスのどの向きを上とするか
-            app.locationManager?.startUpdatingHeading()
+            locationManager?.headingFilter = 1   //何度動いたら更新するか
+            locationManager?.headingOrientation = .portrait //デバイスのどの向きを上とするか
+            locationManager?.startUpdatingHeading()
             
             if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
                 //スピナー表示
@@ -86,6 +89,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         
         //OpenWeathermap
         openWeatherMap = OpenWeatherMap(delegate: self)
+        app.appDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,7 +100,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.updateTimer(_:)), userInfo: nil, repeats: true)
 
         if CLLocationManager.locationServicesEnabled() {
-            app.locationManager?.startUpdatingHeading()
+            locationManager?.startUpdatingHeading()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("ViewDidDisappear")
+        if(isSpinnerEnabled){
+            isSpinnerEnabled = false
+            SwiftSpinner.hide()
+        }
+    }
+    
+    /*
+     *  ApplicationDelegate
+     */
+    //アプリを閉じた際に呼ばれる
+    func appDidEnterBackground(){
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager?.stopUpdatingHeading()
+        }
+        if(isSpinnerEnabled){
+            isSpinnerEnabled = false
+            SwiftSpinner.hide()
+        }
+    }
+    
+    //アプリを開く前に呼ばれる
+    func applicationWillEnterForeground(){
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager?.startUpdatingHeading()
         }
     }
     
@@ -107,7 +141,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined:
-            app.locationManager?.requestWhenInUseAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
         case .restricted, .denied:
             break
         case .authorizedAlways, .authorizedWhenInUse:
@@ -138,7 +172,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             openWeatherMap?.get(lat: Location.sharedManager.latitude!, lon: Location.sharedManager.longitude!)
             if CLLocationManager.locationServicesEnabled() {
                 print("locationManager: stop")
-                app.locationManager?.stopUpdatingLocation()
+                locationManager?.stopUpdatingLocation()
             }
         }
     }
@@ -163,7 +197,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             self.updateAngle()
             self.updateLabels()
             if CLLocationManager.locationServicesEnabled() {
-                self.app.locationManager?.startUpdatingHeading()
+                self.locationManager?.startUpdatingHeading()
             }
         }
  

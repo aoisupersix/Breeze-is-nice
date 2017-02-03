@@ -9,14 +9,17 @@
 import UIKit
 import CoreLocation
 
+protocol ApplicationDelegate {
+    func applicationWillEnterForeground()
+    func appDidEnterBackground()
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate{
 
     var window: UIWindow?
-    
-    //位置情報
-    var locationManager: CLLocationManager?
-    
+    var appDelegate: ApplicationDelegate?
+        
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -28,18 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate{
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        //アプリを閉じた際に呼ばれる
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.stopUpdatingHeading()
-        }
+        self.appDelegate?.appDidEnterBackground()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        //アプリを開く前に呼ばれる
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager?.startUpdatingHeading()
-        }
-
+        self.appDelegate?.applicationWillEnterForeground()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
