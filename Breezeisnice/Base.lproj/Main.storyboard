@@ -90,7 +90,7 @@
                                     <constraint firstAttribute="width" secondItem="MNl-nP-Vnq" secondAttribute="height" multiplier="375:667" id="fJh-VG-ZLH"/>
                                 </constraints>
                             </mapView>
-                            <visualEffectView opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-mH-n25">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-mH-n25">
                                 <rect key="frame" x="0.0" y="467" width="375" height="200"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BOt-TO-DJW">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -104,7 +104,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
-                                                <blurEffect style="dark"/>
+                                                <blurEffect style="light"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
                                     </subviews>
@@ -112,7 +112,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xeK-mH-n25" secondAttribute="height" multiplier="15:8" id="Ypp-wc-9pf"/>
                                 </constraints>
-                                <blurEffect style="light"/>
+                                <blurEffect style="prominent"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" restorationIdentifier="ADView" translatesAutoresizingMaskIntoConstraints="NO" id="zZ1-q2-6kj">
                                 <rect key="frame" x="0.0" y="467" width="375" height="150"/>
@@ -217,7 +217,7 @@
         <scene sceneID="jRm-gY-KLT">
             <objects>
                 <navigationController title="WindView NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kMf-cW-B8i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="mQG-tG-3FZ"/>
+                    <tabBarItem key="tabBarItem" title="風向き表示" id="mQG-tG-3FZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WGe-6d-BB4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -236,7 +236,7 @@
         <scene sceneID="TBl-yc-Xxm">
             <objects>
                 <navigationController title="WeatherView Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Kxb-8R-ArK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="e6x-ei-rf1"/>
+                    <tabBarItem key="tabBarItem" title="天気" id="e6x-ei-rf1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mHE-MA-Ucn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
