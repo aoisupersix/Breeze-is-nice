@@ -27,13 +27,14 @@ class OpenWeatherMap{
     }
     
     func get(lat: Double, lon: Double) {
+        print("----- OpenWeatherMap -----")
         let urlString = "http://api.openweathermap.org/data/2.5/weather?units=metric&lat=\(lat)&lon=\(lon)&APPID=\(OpenWeatherMapConst.API_KEY)"
         print("URL:\(urlString)")
         let url = URL(string: urlString)
         let task = URLSession.shared.dataTask(with: url!, completionHandler: {data, response, error in
             if error == nil {
                 //エラーなし
-                print("OpenWeatherMap: getSecceed")
+                print("OpenWeatherMap: getSucceed")
                 self.parse(data: data! as NSData)
                 self.delegate.openWeather_CompleteSession()
             } else {
@@ -50,9 +51,14 @@ class OpenWeatherMap{
      */
     func parse(data: NSData){
         let json = JSON(data: data as Data)
-        print(json["wind"]["speed"])
+        Location.sharedManager.getTime = json["dt"].int
         Location.sharedManager.temp = json["main"]["temp"].double
         Location.sharedManager.wind_speed = json["wind"]["speed"].double
         Location.sharedManager.wind_deg = json["wind"]["deg"].double
+        Location.sharedManager.weather_main = json["weather"]["main"].string
+        Location.sharedManager.weather_description = json["weather"]["description"].string
+        Location.sharedManager.rain_value = json["rain"]["3h"].double
+        Location.sharedManager.sunrise = json["sys"]["sunrise"].int
+        Location.sharedManager.sunset = json["sys"]["sunset"].int
     }
 }

@@ -36,9 +36,15 @@ class Location{
     /*
      * 天気情報
      */
-    var temp: Double?
-    var wind_speed: Double?
-    var wind_deg: Double?
+    var getTime: Int?   //取得時間
+    var temp: Double?   //気温
+    var wind_speed: Double? //風速
+    var wind_deg: Double?   //風向き
+    var weather_main: String?   //天気状態
+    var weather_description: String?    //天気状態の説明
+    var rain_value: Double? //降水量
+    var sunrise: Int?    //日の出時刻
+    var sunset: Int? //日の入り時刻
     
     func isWeatherEnabled() -> Bool {
         if temp == nil{

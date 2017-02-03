@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="BUC-J7-DW6"/>
+                    <navigationItem key="navigationItem" title="Breeze is nice" id="4cQ-sg-7nc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ok-iE-z3s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
