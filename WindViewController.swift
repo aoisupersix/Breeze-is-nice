@@ -25,7 +25,6 @@ class WindViewController: UIViewController {
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MainViewContainer" {
-            print("紐付け")
             let viewController = segue.destination as! ViewController
             self.delegate = viewController
         }
