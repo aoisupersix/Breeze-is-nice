@@ -180,7 +180,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
-            self.showDialog(title: "エラー", mes: "位置情報を取得できませんでした。再度取得する場合は右上の更新ボタンを押してください。")
+            self.showDialog(title: "エラー", mes: "位置情報を取得できませんでした。再度取得する場合は、右上の更新ボタンを押してください。")
         }else if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.restricted){
             self.showDialog(title: "エラー", mes: "位置情報の使用が許可されていません。端末の設定から位置情報の使用を許可してください。")
         }
@@ -204,10 +204,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
  
     }
     
-    func openWeather_ErrorSession(error: Error) {
-        //TODO
-        print(error)
+    func openWeather_ErrorSession(error: Error?) {
+        self.showDialog(title: "エラー", mes: "気象データを取得できませんでした。再度取得する場合は、少し時間を置いてから右上の更新ボタンを押してください。(気象データは1~2時間で更新されます）")
+        print("Error!")
         SwiftSpinner.hide()
+        self.mapPosition(latD: 10000,lonD: 10000,anim: true)
     }
     
     /*
@@ -257,7 +258,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      *  回転角度更新
      */
     func updateAngle(){
-        if (Location.sharedManager.isWeatherEnabled()){
+        if (Location.sharedManager.isWeatherEnabled() && Location.sharedManager.isLocationEnabled()){
+            print("wind_deg=\(Location.sharedManager.sunset)")
             if(orientation <= Location.sharedManager.wind_deg!){
                 //風向きの方が大きいので、風向き-角度だけ回転させる
                 direction = Location.sharedManager.wind_deg! - orientation

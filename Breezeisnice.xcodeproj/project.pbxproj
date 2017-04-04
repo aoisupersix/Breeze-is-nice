@@ -22,6 +22,7 @@
 		E19200E91E40BFF300164D24 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19200E81E40BFF300164D24 /* MapKit.framework */; };
 		E19B21071E416F2500667601 /* OpenWeatherAPIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19B21061E416F2500667601 /* OpenWeatherAPIConst.swift */; };
 		E19B21091E416FC000667601 /* OpenWeatherMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19B21081E416FC000667601 /* OpenWeatherMap.swift */; };
+		E1D29D711E932C3100000682 /* Weather&Time.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E151C8401E4601CE00B85B04 /* Weather&Time.ttf */; };
 		EA0A5433895B466F85683E66 /* Pods_BreezeisniceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073F6D0E907E2893BF84ABB9 /* Pods_BreezeisniceUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -264,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19200D01E40A7D500164D24 /* LaunchScreen.storyboard in Resources */,
+				E1D29D711E932C3100000682 /* Weather&Time.ttf in Resources */,
 				E19200CD1E40A7D500164D24 /* Assets.xcassets in Resources */,
 				E19200CB1E40A7D500164D24 /* Main.storyboard in Resources */,
 				E161CE711E41C7E4008FD324 /* arrow.png in Resources */,

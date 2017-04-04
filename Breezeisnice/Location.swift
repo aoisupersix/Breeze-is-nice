@@ -47,7 +47,7 @@ class Location{
     var sunset: Int? //日の入り時刻
     
     func isWeatherEnabled() -> Bool {
-        if temp == nil{
+        if getTime == nil || temp == nil || wind_speed == nil || wind_deg == nil || weather_main == nil || weather_description == nil || rain_value == nil || sunrise == nil || sunset == nil{
             return false
         }else{
             return true

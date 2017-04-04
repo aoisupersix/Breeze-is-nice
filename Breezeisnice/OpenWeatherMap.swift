@@ -15,7 +15,7 @@ import SwiftSpinner
 
 protocol OpenWeatherMapDelegate {
     func openWeather_CompleteSession()
-    func openWeather_ErrorSession(error: Error)
+    func openWeather_ErrorSession(error: Error?)
 }
 
 class OpenWeatherMap{
@@ -36,7 +36,11 @@ class OpenWeatherMap{
                 //エラーなし
                 print("OpenWeatherMap: getSucceed")
                 self.parse(data: data! as NSData)
-                self.delegate.openWeather_CompleteSession()
+                if Location.sharedManager.isWeatherEnabled() {
+                    self.delegate.openWeather_CompleteSession()
+                }else{
+                    self.delegate.openWeather_ErrorSession(error: error)
+                }
             } else {
                 //エラー
                 print("OpenWeatherMap: getError")

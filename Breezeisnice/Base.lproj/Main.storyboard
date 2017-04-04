@@ -27,6 +27,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1d-Zg-IVI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="u4m-pH-WIl">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKf-HE-PX7">
                                 <rect key="frame" x="125" y="180" width="125" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,7 +43,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="K1d-Zg-IVI" secondAttribute="bottom" id="7lL-IM-xwF"/>
+                            <constraint firstItem="K1d-Zg-IVI" firstAttribute="leading" secondItem="0dK-Es-GqV" secondAttribute="leading" id="FhW-zn-RgT"/>
+                            <constraint firstItem="K1d-Zg-IVI" firstAttribute="top" secondItem="0dK-Es-GqV" secondAttribute="top" id="qpi-As-Bgx"/>
+                            <constraint firstAttribute="trailing" secondItem="K1d-Zg-IVI" secondAttribute="trailing" id="wLG-NX-I1Y"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Breeze is nice" id="4cQ-sg-7nc"/>
                 </viewController>
@@ -98,20 +112,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="BgMap" mapType="standard" showsUserLocation="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNl-nP-Vnq">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="BgMap" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MNl-nP-Vnq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-mH-n25">
-                                <rect key="frame" x="0.0" y="472.5" width="375" height="194.5"/>
+                                <rect key="frame" x="0.0" y="472" width="375" height="195"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BOt-TO-DJW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="194.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="roY-tU-Irr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="rF0-1b-ghM">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -139,7 +153,7 @@
                                             <constraint firstAttribute="width" constant="98" id="Dw9-f3-mmt"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindSpeedLabel" text="風速: 99.99 m/s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="OSy-D3-iH0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindSpeedLabel" text="風速: Error m/s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="OSy-D3-iH0">
                                         <rect key="frame" x="208" y="10" width="164" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="Lt3-4S-pyQ"/>
@@ -149,8 +163,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="RelativeSpeedLabel" text="速度: 10 km/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-DN-Hzy">
-                                        <rect key="frame" x="232" y="47" width="140" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="RelativeSpeedLabel" text="速度: Error km/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-DN-Hzy">
+                                        <rect key="frame" x="208.5" y="47" width="163.5" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28.5" id="8YE-Sr-t0Q"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Big-yN-SPJ"/>
@@ -159,7 +173,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindDegLabel" text="風向き: 西北西" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-ig-RTw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindDegLabel" text="風向き: Error" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-ig-RTw">
                                         <rect key="frame" x="173" y="88" width="120" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27.5" id="GzU-aR-bvV"/>
@@ -169,7 +183,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="TempLabel" text="14℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FVG-7e-aN7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="TempLabel" text="Error℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FVG-7e-aN7">
                                         <rect key="frame" x="294" y="77" width="78" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="78" id="9wL-jM-ya0"/>
@@ -234,7 +248,7 @@
                 <navigationController title="WindView NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kMf-cW-B8i" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="風向き表示" id="mQG-tG-3FZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WGe-6d-BB4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WGe-6d-BB4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -253,7 +267,7 @@
                 <navigationController title="WeatherView Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Kxb-8R-ArK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="天気" id="e6x-ei-rf1"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mHE-MA-Ucn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mHE-MA-Ucn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
