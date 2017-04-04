@@ -125,6 +125,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
             isSpinnerEnabled = false
             SwiftSpinner.hide()
         }
+        BgMap.userTrackingMode = MKUserTrackingMode.followWithHeading
     }
     
     //アプリを開く前に呼ばれる
@@ -279,6 +280,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         // 表示領域を作成
         let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(BgMap.centerCoordinate, latDist, lonDist);
         
+        BgMap.setUserTrackingMode(MKUserTrackingMode.followWithHeading, animated: anim)
+        BgMap.isPitchEnabled = false
+        BgMap.isRotateEnabled = false
+        BgMap.isScrollEnabled = false
         BgMap.setRegion(region, animated: anim)
     }
     

@@ -41,7 +41,8 @@
 		3C02A63117F96B1D66EC0C35 /* Pods-Breezeisnice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezeisnice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezeisnice/Pods-Breezeisnice.debug.xcconfig"; sourceTree = "<group>"; };
 		542FA1F5C200F87EAF40E264 /* Pods-Breezeisnice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezeisnice.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezeisnice/Pods-Breezeisnice.release.xcconfig"; sourceTree = "<group>"; };
 		6E06D7493E8E38FA4544C4C0 /* Pods_Breezeisnice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezeisnice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E15FDA561E434E9900021B40 /* WindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindViewController.swift; sourceTree = "<group>"; };
+		E151C8401E4601CE00B85B04 /* Weather&Time.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Weather&Time.ttf"; sourceTree = "<group>"; };
+		E15FDA561E434E9900021B40 /* WindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindViewController.swift; path = ../WindViewController.swift; sourceTree = "<group>"; };
 		E161CE691E419698008FD324 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E161CE6D1E419EB2008FD324 /* UserStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatus.swift; sourceTree = "<group>"; };
 		E161CE701E41C7E4008FD324 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
@@ -106,7 +107,6 @@
 		E19200B91E40A7D400164D24 = {
 			isa = PBXGroup;
 			children = (
-				E15FDA561E434E9900021B40 /* WindViewController.swift */,
 				E19200C41E40A7D500164D24 /* Breezeisnice */,
 				E19200D91E40A7D500164D24 /* BreezeisniceUITests */,
 				E19200C31E40A7D500164D24 /* Products */,
@@ -127,6 +127,7 @@
 		E19200C41E40A7D500164D24 /* Breezeisnice */ = {
 			isa = PBXGroup;
 			children = (
+				E151C8401E4601CE00B85B04 /* Weather&Time.ttf */,
 				E161CE6F1E41C7AF008FD324 /* Resource */,
 				E19B21051E416F0100667601 /* Const */,
 				E19200C51E40A7D500164D24 /* AppDelegate.swift */,
@@ -138,6 +139,7 @@
 				E19B21081E416FC000667601 /* OpenWeatherMap.swift */,
 				E161CE691E419698008FD324 /* Location.swift */,
 				E161CE6D1E419EB2008FD324 /* UserStatus.swift */,
+				E15FDA561E434E9900021B40 /* WindViewController.swift */,
 			);
 			path = Breezeisnice;
 			sourceTree = "<group>";
