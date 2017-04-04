@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B3F8BD8AFBC34F143999A64A /* Pods_Breezeisnice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E06D7493E8E38FA4544C4C0 /* Pods_Breezeisnice.framework */; };
+		E12909A11E93B004002996E4 /* WeatherIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E12909A01E93B004002996E4 /* WeatherIcon.png */; };
+		E12909A31E93B250002996E4 /* WindIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E12909A21E93B250002996E4 /* WindIcon.png */; };
 		E15FDA571E434E9900021B40 /* WindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15FDA561E434E9900021B40 /* WindViewController.swift */; };
 		E161CE6A1E419698008FD324 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E161CE691E419698008FD324 /* Location.swift */; };
 		E161CE6E1E419EB2008FD324 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E161CE6D1E419EB2008FD324 /* UserStatus.swift */; };
@@ -43,6 +45,8 @@
 		3C02A63117F96B1D66EC0C35 /* Pods-Breezeisnice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezeisnice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Breezeisnice/Pods-Breezeisnice.debug.xcconfig"; sourceTree = "<group>"; };
 		542FA1F5C200F87EAF40E264 /* Pods-Breezeisnice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Breezeisnice.release.xcconfig"; path = "Pods/Target Support Files/Pods-Breezeisnice/Pods-Breezeisnice.release.xcconfig"; sourceTree = "<group>"; };
 		6E06D7493E8E38FA4544C4C0 /* Pods_Breezeisnice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Breezeisnice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E12909A01E93B004002996E4 /* WeatherIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WeatherIcon.png; sourceTree = "<group>"; };
+		E12909A21E93B250002996E4 /* WindIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WindIcon.png; sourceTree = "<group>"; };
 		E151C8401E4601CE00B85B04 /* Weather&Time.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Weather&Time.ttf"; sourceTree = "<group>"; };
 		E15FDA561E434E9900021B40 /* WindViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WindViewController.swift; path = ../WindViewController.swift; sourceTree = "<group>"; };
 		E161CE691E419698008FD324 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		E161CE6F1E41C7AF008FD324 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E12909A21E93B250002996E4 /* WindIcon.png */,
+				E12909A01E93B004002996E4 /* WeatherIcon.png */,
 				E1D29D721E933B1100000682 /* bg.jpg */,
 				E161CE701E41C7E4008FD324 /* arrow.png */,
 			);
@@ -268,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E19200D01E40A7D500164D24 /* LaunchScreen.storyboard in Resources */,
+				E12909A11E93B004002996E4 /* WeatherIcon.png in Resources */,
+				E12909A31E93B250002996E4 /* WindIcon.png in Resources */,
 				E1D29D711E932C3100000682 /* Weather&Time.ttf in Resources */,
 				E19200CD1E40A7D500164D24 /* Assets.xcassets in Resources */,
 				E19200CB1E40A7D500164D24 /* Main.storyboard in Resources */,

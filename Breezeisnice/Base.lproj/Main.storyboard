@@ -156,7 +156,7 @@
                                             <constraint firstAttribute="width" constant="98" id="Dw9-f3-mmt"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindSpeedLabel" text="風速: Error m/s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="OSy-D3-iH0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindSpeedLabel" text="風速:  m/s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="OSy-D3-iH0">
                                         <rect key="frame" x="208" y="10" width="164" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="Lt3-4S-pyQ"/>
@@ -166,8 +166,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="RelativeSpeedLabel" text="速度: Error km/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-DN-Hzy">
-                                        <rect key="frame" x="208" y="47" width="164" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="RelativeSpeedLabel" text="速度:  km/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-DN-Hzy">
+                                        <rect key="frame" x="232" y="47" width="140" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28.5" id="8YE-Sr-t0Q"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Big-yN-SPJ"/>
@@ -176,7 +176,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindDegLabel" text="風向き: Error" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-ig-RTw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="WindDegLabel" text="風向き: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6AR-ig-RTw">
                                         <rect key="frame" x="173" y="88" width="120" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="27.5" id="GzU-aR-bvV"/>
@@ -186,7 +186,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="TempLabel" text="Error℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FVG-7e-aN7">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="TempLabel" text="℃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FVG-7e-aN7">
                                         <rect key="frame" x="294" y="77" width="78" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="78" id="9wL-jM-ya0"/>
@@ -249,7 +249,7 @@
         <scene sceneID="jRm-gY-KLT">
             <objects>
                 <navigationController title="WindView NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kMf-cW-B8i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="風向き表示" selectedImage="WindDegIcon.pdf" id="mQG-tG-3FZ"/>
+                    <tabBarItem key="tabBarItem" title="風向き表示" image="WindIcon.png" id="mQG-tG-3FZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WGe-6d-BB4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -268,7 +268,7 @@
         <scene sceneID="TBl-yc-Xxm">
             <objects>
                 <navigationController title="WeatherView Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="Kxb-8R-ArK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="天気" id="e6x-ei-rf1"/>
+                    <tabBarItem key="tabBarItem" title="天気" image="WeatherIcon.png" id="e6x-ei-rf1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mHE-MA-Ucn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -285,7 +285,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="WindDegIcon.pdf" width="16" height="16"/>
+        <image name="WeatherIcon.png" width="50" height="50"/>
+        <image name="WindIcon.png" width="50" height="50"/>
         <image name="arrow.png" width="286" height="350"/>
         <image name="bg.jpg" width="3265" height="4898"/>
     </resources>
