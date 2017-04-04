@@ -27,6 +27,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dmp-Qt-VVc">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K1d-Zg-IVI">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="u4m-pH-WIl">
@@ -43,7 +47,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="K1d-Zg-IVI" secondAttribute="bottom" id="7lL-IM-xwF"/>
                             <constraint firstItem="K1d-Zg-IVI" firstAttribute="leading" secondItem="0dK-Es-GqV" secondAttribute="leading" id="FhW-zn-RgT"/>
@@ -164,7 +167,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="RelativeSpeedLabel" text="速度: Error km/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-DN-Hzy">
-                                        <rect key="frame" x="208.5" y="47" width="163.5" height="29"/>
+                                        <rect key="frame" x="208" y="47" width="164" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="28.5" id="8YE-Sr-t0Q"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Big-yN-SPJ"/>
@@ -246,7 +249,7 @@
         <scene sceneID="jRm-gY-KLT">
             <objects>
                 <navigationController title="WindView NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="kMf-cW-B8i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="風向き表示" id="mQG-tG-3FZ"/>
+                    <tabBarItem key="tabBarItem" title="風向き表示" selectedImage="WindDegIcon.pdf" id="mQG-tG-3FZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="WGe-6d-BB4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -282,6 +285,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="WindDegIcon.pdf" width="16" height="16"/>
         <image name="arrow.png" width="286" height="350"/>
+        <image name="bg.jpg" width="3265" height="4898"/>
     </resources>
 </document>

@@ -42,12 +42,12 @@ class Location{
     var wind_deg: Double?   //風向き
     var weather_main: String?   //天気状態
     var weather_description: String?    //天気状態の説明
-    var rain_value: Double? //降水量
+    //var rain_value: Double? //降水量 *取得不能
     var sunrise: Int?    //日の出時刻
     var sunset: Int? //日の入り時刻
     
     func isWeatherEnabled() -> Bool {
-        if getTime == nil || temp == nil || wind_speed == nil || wind_deg == nil || weather_main == nil || weather_description == nil || rain_value == nil || sunrise == nil || sunset == nil{
+        if getTime == nil || temp == nil || wind_speed == nil || wind_deg == nil || weather_main == nil || weather_description == nil || sunrise == nil || sunset == nil{
             return false
         }else{
             return true

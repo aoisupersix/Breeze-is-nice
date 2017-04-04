@@ -59,9 +59,9 @@ class OpenWeatherMap{
         Location.sharedManager.temp = json["main"]["temp"].double
         Location.sharedManager.wind_speed = json["wind"]["speed"].double
         Location.sharedManager.wind_deg = json["wind"]["deg"].double
-        Location.sharedManager.weather_main = json["weather"]["main"].string
-        Location.sharedManager.weather_description = json["weather"]["description"].string
-        Location.sharedManager.rain_value = json["rain"]["3h"].double
+        Location.sharedManager.weather_main = json["weather"][0]["main"].string
+        Location.sharedManager.weather_description = json["weather"][0]["description"].string
+        //Location.sharedManager.rain_value = json["rain"]["3h"].double
         Location.sharedManager.sunrise = json["sys"]["sunrise"].int
         Location.sharedManager.sunset = json["sys"]["sunset"].int
     }

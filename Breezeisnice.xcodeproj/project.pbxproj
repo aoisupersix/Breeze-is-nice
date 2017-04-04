@@ -23,6 +23,7 @@
 		E19B21071E416F2500667601 /* OpenWeatherAPIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19B21061E416F2500667601 /* OpenWeatherAPIConst.swift */; };
 		E19B21091E416FC000667601 /* OpenWeatherMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19B21081E416FC000667601 /* OpenWeatherMap.swift */; };
 		E1D29D711E932C3100000682 /* Weather&Time.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E151C8401E4601CE00B85B04 /* Weather&Time.ttf */; };
+		E1D29D731E933B1100000682 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E1D29D721E933B1100000682 /* bg.jpg */; };
 		EA0A5433895B466F85683E66 /* Pods_BreezeisniceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 073F6D0E907E2893BF84ABB9 /* Pods_BreezeisniceUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		E19200E81E40BFF300164D24 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E19B21061E416F2500667601 /* OpenWeatherAPIConst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherAPIConst.swift; sourceTree = "<group>"; };
 		E19B21081E416FC000667601 /* OpenWeatherMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMap.swift; sourceTree = "<group>"; };
+		E1D29D721E933B1100000682 /* bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg.jpg; sourceTree = "<group>"; };
 		E1F6CC3F2EA1FE1AE851DE0E /* Pods-BreezeisniceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreezeisniceUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreezeisniceUITests/Pods-BreezeisniceUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 		E161CE6F1E41C7AF008FD324 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E1D29D721E933B1100000682 /* bg.jpg */,
 				E161CE701E41C7E4008FD324 /* arrow.png */,
 			);
 			name = Resource;
@@ -268,6 +271,7 @@
 				E1D29D711E932C3100000682 /* Weather&Time.ttf in Resources */,
 				E19200CD1E40A7D500164D24 /* Assets.xcassets in Resources */,
 				E19200CB1E40A7D500164D24 /* Main.storyboard in Resources */,
+				E1D29D731E933B1100000682 /* bg.jpg in Resources */,
 				E161CE711E41C7E4008FD324 /* arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

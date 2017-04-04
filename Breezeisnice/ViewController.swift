@@ -208,7 +208,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
         self.showDialog(title: "エラー", mes: "気象データを取得できませんでした。再度取得する場合は、少し時間を置いてから右上の更新ボタンを押してください。(気象データは1~2時間で更新されます）")
         print("Error!")
         SwiftSpinner.hide()
-        self.mapPosition(latD: 10000,lonD: 10000,anim: true)
+        //self.mapPosition(latD: 10000,lonD: 10000,anim: true)
     }
     
     /*
@@ -259,7 +259,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, OpenWeatherMa
      */
     func updateAngle(){
         if (Location.sharedManager.isWeatherEnabled() && Location.sharedManager.isLocationEnabled()){
-            print("wind_deg=\(Location.sharedManager.sunset)")
             if(orientation <= Location.sharedManager.wind_deg!){
                 //風向きの方が大きいので、風向き-角度だけ回転させる
                 direction = Location.sharedManager.wind_deg! - orientation
